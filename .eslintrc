@@ -1,0 +1,49 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb",
+    "plugin:flowtype/recommended",
+    "plugin:jest/recommended",
+    "prettier",
+    "prettier/flowtype",
+    "prettier/react",
+    "prettier/standard"
+  ],
+  "plugins": ["flowtype", "prettier", "jest"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "rules": {
+    "arrow-body-style": 1,
+    "no-restricted-syntax": 0,
+    "guard-for-in": 0,
+    "no-await-in-loop": 0,
+    "react/jsx-filename-extension": 0,
+    "no-constant-condition": 0,
+    "semi": 0,
+    "no-confusing-arrow": 0,
+    "react/jsx-pascal-case": 0,
+    "no-param-reassign": 0,
+    "import/prefer-default-export": 0,
+    "max-len": 0,
+    "yoda": ["error", "never", { "exceptRange": true }],
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "aspects": ["noHref", "invalidHref", "preferButton"]
+      }
+    ],
+    "react/prefer-stateless-function": [1, { "ignorePureComponents": true }]
+  },
+  "globals": {}
+}
