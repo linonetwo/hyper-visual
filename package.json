@@ -22,7 +22,11 @@
     "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
   },
   "dependencies": {
-    "lodash": "^4.17.5"
+    "redux-saga-routines": "^2.2.3"
+  },
+  "peerDependencies": {
+    "react": "^16.3.2",
+    "redux": "^4.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

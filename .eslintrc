@@ -22,28 +22,39 @@
     "jest/globals": true
   },
   "rules": {
-    "arrow-body-style": 1,
-    "no-restricted-syntax": 0,
-    "guard-for-in": 0,
-    "no-await-in-loop": 0,
-    "react/jsx-filename-extension": 0,
-    "no-constant-condition": 0,
-    "semi": 0,
-    "no-confusing-arrow": 0,
-    "react/jsx-pascal-case": 0,
-    "no-param-reassign": 0,
-    "import/prefer-default-export": 0,
-    "max-len": 0,
-    "yoda": ["error", "never", { "exceptRange": true }],
+    "comma-dangle": 1,
+    "arrow-parens": ["off"],
+    "consistent-return": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "off",
+    "flowtype/define-flow-type": 1,
+    "flowtype/use-flow-type": 1,
+    "generator-star-spacing": "off",
+    "import/no-unresolved": "error",
+    "import/no-extraneous-dependencies": "off",
+    "no-console": "off",
+    "promise/no-native": "off",
+    "react/sort-comp": [
+      "error",
+      {
+        "order": ["type-annotations", "static-methods", "lifecycle", "everything-else", "render"]
+      }
+    ],
+    "react/no-multi-comp": "off",
+    "no-restricted-syntax": "off",
+    "max-len": "off",
+    "react/jsx-no-bind": "off",
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
     "jsx-a11y/anchor-is-valid": [
       "error",
       {
-        "components": ["Link"],
-        "specialLink": ["to", "hrefLeft", "hrefRight"],
+        "components": [],
+        "specialLink": ["hrefLeft", "hrefRight"],
         "aspects": ["noHref", "invalidHref", "preferButton"]
       }
-    ],
-    "react/prefer-stateless-function": [1, { "ignorePureComponents": true }]
+    ]
   },
-  "globals": {}
+  "globals": {
+    "window": true
+  }
 }
