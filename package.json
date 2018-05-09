@@ -22,6 +22,8 @@
     "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
   },
   "dependencies": {
+    "react": "^16.3.2",
+    "redux-saga": "^0.16.0",
     "redux-saga-routines": "^2.2.3"
   },
   "peerDependencies": {
@@ -29,7 +31,7 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-flow-runtime": "^0.17.0",
@@ -38,15 +40,15 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.46.2",
+    "eslint-plugin-flowtype": "^2.46.3",
     "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jest": "^21.15.0",
+    "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.70.0",
+    "flow-bin": "^0.71.0",
     "flow-typed": "^2.4.0",
-    "webpack": "^4.6.0",
-    "webpack-cli": "^2.0.14"
+    "webpack": "^4.8.1",
+    "webpack-cli": "^2.1.3"
   }
 }

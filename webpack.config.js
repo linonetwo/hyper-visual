@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  target: 'node',
   entry: './src/index.js',
   output: {
     filename: 'index.js',
@@ -17,5 +18,5 @@ module.exports = {
       }
     ]
   },
-  externals: ['redux'],
+  externals: ['redux', 'react'],
 };
