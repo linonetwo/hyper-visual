@@ -5,8 +5,9 @@
   "module": "src/index.js",
   "scripts": {
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
-    "dev": "webpack --mode development",
-    "build": "webpack --mode production"
+    "dev": "webpack --watch --mode development",
+    "build": "webpack --mode production",
+    "prepublish": "rm -rf ./dist && yarn build"
   },
   "keywords": [
     "hyper",
@@ -22,7 +23,6 @@
     "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
   },
   "dependencies": {
-    "react": "^16.3.2",
     "redux-saga": "^0.16.0",
     "redux-saga-routines": "^2.2.3"
   },
@@ -31,6 +31,8 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
+    "react": "^16.3.2",
+    "redux": "^4.0.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",

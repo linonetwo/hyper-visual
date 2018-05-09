@@ -6,6 +6,10 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+    library: 'hyper-cli2gui',
+    libraryTarget: 'umd',
+    publicPath: '/dist/',
+    umdNamedDefine: true,
   },
   module: {
     rules: [
@@ -13,10 +17,10 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
-  externals: ['redux', 'react'],
+  // externals: ['redux', 'react'],
 };
