@@ -9,7 +9,7 @@ export default css`
     width: 30%;
     min-width: 200px;
     max-width: 500px;
-    pointer-events: none;
-    overflow: scroll;
+    overflow: auto;
+    z-index: 3;
   }
 `;

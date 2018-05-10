@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import type { ComponentType } from 'react';
 
+/** Get ref to terminal instance */
 export default (Term: ComponentType<*>) =>
   class DecorateTerm extends Component<*> {
     render() {
