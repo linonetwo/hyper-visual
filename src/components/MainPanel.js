@@ -23,7 +23,7 @@ export default class MainPanel extends Component<Props, State> {
   render() {
     return (
       <div className="hyper-cli2gui">
-        {this.props.recommendations ? this.props.recommendations.map(item => <div>{item}</div>) : ''}
+        啊啊啊
       </div>
     );
   }

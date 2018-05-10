@@ -1,5 +1,5 @@
 // @flow
-import React from 'react';
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import type { ComponentType } from 'react';
 import type { Dispatch } from 'redux';
@@ -14,6 +14,9 @@ export function mapHyperDispatch(dispatch: Dispatch<any>, prevMap: Object) {
   };
 }
 
-export default (Hyper: ComponentType<*>) => (props: Object) => (
-  <Hyper {...props} customChildren={() => <MainPanel {...props} />} />
-);
+export default (Hyper: ComponentType<*>) =>
+  class DecorateHyper extends Component<*> {
+    render() {
+      return <Hyper {...this.props} customChildren={<MainPanel {...this.props} />} />;
+    }
+  };
