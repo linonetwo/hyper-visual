@@ -3,6 +3,8 @@ import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
+import { execCLIByGUI } from './actions'
+
 function readHistory(): Promise<string[]> {
   return new Promise((resolve, reject) =>
     fs.readFile(
@@ -19,13 +21,18 @@ async function getSearchResult(input: string): Promise<string[]> {
 
 export const reduceUI = (state, action) => {
   // If it's program that input things, not user, just don't update input status
-  if (state.ui.execCLIByGUI) return state;
+  if (action.type === execCLIByGUI.FULFILL) {
+    return state.set('execCLIByGUI', false);
+  }
+  if (state.execCLIByGUI) return state;
 
   switch (action.type) {
+    case execCLIByGUI.TRIGGER:
+      return state.set('execCLIByGUI', true);
     case 'SESSION_USER_DATA': {
       const { data } = action;
       if (data.charCodeAt(0) === 127) {
-        return state.currentInput ? state.currentInput.slice(0, -1) : '';
+        return state.set('currentInput', state.currentInput ? state.currentInput.slice(0, -1) : '');
       }
       if (data.charCodeAt(0) === 13) {
         return state.set('currentInput', '');
