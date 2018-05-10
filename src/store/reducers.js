@@ -2,8 +2,9 @@
 import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import type { Map } from 'immutable';
 
-import { execCLIByGUI } from './actions'
+import { execCLIByGUI } from './actions';
 
 function readHistory(): Promise<string[]> {
   return new Promise((resolve, reject) =>
@@ -19,7 +20,7 @@ async function getSearchResult(input: string): Promise<string[]> {
   return history;
 }
 
-export const reduceUI = (state, action) => {
+export function reduceSessions(state: Map<*, *>, action) {
   // If it's program that input things, not user, just don't update input status
   if (action.type === execCLIByGUI.FULFILL) {
     return state.set('execCLIByGUI', false);
@@ -29,27 +30,31 @@ export const reduceUI = (state, action) => {
   switch (action.type) {
     case execCLIByGUI.TRIGGER:
       return state.set('execCLIByGUI', true);
+
+    case 'SESSION_ADD':
+      // create a place to store user's inputs in each tab
+      if (state.userInputs) {
+        return state.setIn(['userInputs', action.uid], '');
+      }
+      return state.set('userInputs', { [action.uid]: '' });
+    case 'SESSION_USER_EXIT':
+      return state.deleteIn(['userInputs', action.uid]);
+
     case 'SESSION_USER_DATA': {
-      const { data } = action;
-      if (data.charCodeAt(0) === 127) {
-        return state.set('currentInput', state.currentInput ? state.currentInput.slice(0, -1) : '');
+      const previousInput = state.userInputs[state.activeUid];
+      const pressedKey = action.data;
+
+      // hitting backspace
+      if (pressedKey.charCodeAt(0) === 127) {
+        return state.setIn(['userInputs', state.activeUid], previousInput ? previousInput.slice(0, -1) : '');
       }
-      if (data.charCodeAt(0) === 13) {
-        return state.set('currentInput', '');
+      // pressing Enter ↵
+      if (pressedKey.charCodeAt(0) === 13) {
+        return state.setIn(['userInputs', state.activeUid], '');
       }
-      return state.set('currentInput', (state.currentInput || '') + (data || '').toLowerCase());
+      return state.setIn(['userInputs', state.activeUid], (previousInput || '') + (pressedKey || '').toLowerCase());
     }
     default:
       return state;
   }
-};
-
-export const reduceSessions = (state, action) => {
-  switch (action.type) {
-    case 'SESSION_ADD':
-    case 'SESSION_SET_ACTIVE':
-      return state.set('currentUID', action.uid);
-    default:
-      return state;
-  }
-};
+}

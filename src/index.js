@@ -10,4 +10,4 @@ export { default as decorateHyper } from './components/decorateHyper';
 // Get reference to the shell, so we can execute something inside panel
 export { default as decorateTerm } from './components/decorateTerm';
 // Calculate what to recommend
-export { reduceSessions, reduceUI } from './store/reducers';
+export { reduceSessions } from './store/reducers';
