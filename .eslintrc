@@ -27,6 +27,7 @@
     "consistent-return": "off",
     "no-underscore-dangle": "off",
     "no-unused-expressions": "off",
+    "import/prefer-default-export": "off",
     "flowtype/define-flow-type": 1,
     "flowtype/use-flow-type": 1,
     "react/prefer-stateless-function": "off",

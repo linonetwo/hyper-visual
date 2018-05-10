@@ -22,5 +22,5 @@ module.exports = {
       },
     ],
   },
-  // externals: ['redux', 'react'],
+  externals: ['redux', 'react', 'immutable'],
 };
