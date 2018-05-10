@@ -2,7 +2,6 @@
 import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
-import type { Map } from 'immutable';
 
 import { execCLIByGUI } from './actions';
 
@@ -20,7 +19,7 @@ async function getSearchResult(input: string): Promise<string[]> {
   return history;
 }
 
-export function reduceSessions(state: Map<*, *>, action) {
+export function reduceSessions(state, action) {
   // If it's program that input things, not user, just don't update input status
   if (action.type === execCLIByGUI.FULFILL) {
     return state.set('execCLIByGUI', false);
