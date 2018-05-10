@@ -25,7 +25,6 @@ export function reduceSessions(state, action) {
     return state.set('execCLIByGUI', false);
   }
   if (state.execCLIByGUI) return state;
-
   switch (action.type) {
     case execCLIByGUI.TRIGGER:
       return state.set('execCLIByGUI', true);
@@ -36,8 +35,6 @@ export function reduceSessions(state, action) {
         return state.setIn(['userInputs', action.uid], '');
       }
       return state.set('userInputs', { [action.uid]: '' });
-    case 'SESSION_USER_EXIT':
-      return state.deleteIn(['userInputs', action.uid]);
 
     case 'SESSION_USER_DATA': {
       const previousInput = state.userInputs[state.activeUid];
