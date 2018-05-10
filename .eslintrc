@@ -29,6 +29,7 @@
     "no-unused-expressions": "off",
     "flowtype/define-flow-type": 1,
     "flowtype/use-flow-type": 1,
+    "react/prefer-stateless-function": "off",
     "generator-star-spacing": "off",
     "import/no-unresolved": "error",
     "import/no-extraneous-dependencies": "off",
