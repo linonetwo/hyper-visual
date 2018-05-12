@@ -1,8 +1,6 @@
-import { createRoutine } from 'redux-saga-routines';
+// @flow
 
-export const SESSION_USER_DATA = data => ({
-  type: 'SESSION_ADD_DATA',
-  data,
-});
-export const updateRecommendation = createRoutine('cli2gui/updateRecommendation');
-export const execCLIByGUI = createRoutine('cli2gui/execCLIByGUI');
+export const WRITE_TO_TERMINAL = 'cli2gui/execute command';
+export const writeToTerminal = (command: string, uid: string) => window.rpc.emit(WRITE_TO_TERMINAL, { command, uid });
+export const executeCommand = (command: string, uid: string, currentInput: string = '') =>
+  writeToTerminal(`${'\b'.repeat(currentInput.length)}${command}\r`, uid);

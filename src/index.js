@@ -8,6 +8,6 @@ export const decorateConfig = (config: Object) => ({
 // Recommendation Panel
 export { default as decorateHyper } from './components/decorateHyper';
 // Get reference to the shell, so we can execute something inside panel
-export { default as decorateTerm } from './components/decorateTerm';
+export { default as onWindow } from './onWindow';
 // Calculate what to recommend
 export { reduceSessions } from './store/reducers';

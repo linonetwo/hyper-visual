@@ -4,40 +4,30 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
 
-import { SESSION_USER_DATA } from '../store/actions';
+import { executeCommand } from '../store/actions';
 
 type Props = {
-  SESSION_USER_DATA: Function,
   currentInput: string,
+  activeUid: string,
 };
-type State = {
-  currentInput: string,
-};
+type State = {};
 class MainPanel extends Component<Props, State> {
-  state = {
-    currentInput: '',
-  };
-
   onClick = (command: string) => {
-    // this.props.execCLIByGUI();
-    this.props.SESSION_USER_DATA('\b'.repeat(this.props.currentInput.length));
-    this.props.SESSION_USER_DATA(command);
-    this.props.SESSION_USER_DATA('\n');
-    // this.props.execCLIByGUIDone();
+    executeCommand(command, this.props.activeUid, this.props.currentInput);
   };
   render() {
     return (
-      <div onClick={() => this.onClick('aaa')} className="hyper-cli2gui">
+      <button onClick={() => this.onClick('aaa')} className="hyper-cli2gui">
         啊啊啊
-      </div>
+      </button>
     );
   }
 }
 
 function mapStateToProps({ sessions: { userInputs, activeUid } }) {
-  return { currentInput: userInputs ? userInputs[activeUid] : '' };
+  return { currentInput: userInputs ? userInputs[activeUid] : '', activeUid };
 }
 function mapDispatchToProps(dispatch: Dispatch<*>) {
-  return bindActionCreators({ SESSION_USER_DATA }, dispatch);
+  return bindActionCreators({}, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);

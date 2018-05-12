@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import type { ComponentType } from 'react';
 
 import MainPanel from './MainPanel';
-import { updateRecommendation } from '../store/actions';
 
 export default (Hyper: ComponentType<*>) =>
   class DecorateHyper extends Component<*> {

@@ -3,8 +3,6 @@ import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
-import { execCLIByGUI } from './actions';
-
 function readHistory(): Promise<string[]> {
   return new Promise((resolve, reject) =>
     fs.readFile(
@@ -21,14 +19,9 @@ async function getSearchResult(input: string): Promise<string[]> {
 
 export function reduceSessions(state, action) {
   // If it's program that input things, not user, just don't update input status
-  if (action.type === execCLIByGUI.FULFILL) {
-    return state.set('execCLIByGUI', false);
-  }
-  if (state.execCLIByGUI) return state;
-  switch (action.type) {
-    case execCLIByGUI.TRIGGER:
-      return state.set('execCLIByGUI', true);
 
+
+  switch (action.type) {
     case 'SESSION_ADD':
       // create a place to store user's inputs in each tab
       if (state.userInputs) {
