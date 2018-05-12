@@ -51,4 +51,8 @@ You may have collect tons of context for different situation. If you want, you c
 
 ## Reference
 
-This project is heavily inspired by [hyper-history](https://github.com/garyxuehong/hyper-history) and [autoJump](https://github.com/wting/autojump)
+This project is heavily inspired by [hyper-history](https://github.com/garyxuehong/hyper-history) and [autoJump](https://github.com/wting/autojump).
+
+And I read code from these projects:
+
+- [hyper-autoprofile](https://github.com/chabou/hyper-autoprofile)
