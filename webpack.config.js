@@ -6,7 +6,7 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
-    library: 'hyper-cli2gui',
+    library: 'hyper-visual',
     libraryTarget: 'umd',
     publicPath: '/dist/',
     umdNamedDefine: true,

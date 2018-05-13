@@ -1,5 +1,5 @@
 // @flow
-export const PLUGIN = 'cli2gui';
+export const PLUGIN = 'visual';
 export const INPUT_STORAGE_PATH = `${PLUGIN}/userInputs`;
 export const UI_DATA_PATH = 'uiData';
 // hyper APIs

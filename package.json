@@ -1,5 +1,5 @@
 {
-  "name": "hyper-cli2gui",
+  "name": "hyper-visual",
   "version": "1.0.0",
   "main": "dist/index.js",
   "module": "src/index.js",
@@ -20,7 +20,7 @@
   "description": "Frequently Used CLI command now listed in a clickable GUI.",
   "repository": {
     "type": "git",
-    "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
+    "url": "git+git@github.com:linonetwo/hyper-visual.git"
   },
   "dependencies": {
     "fuzzysearch": "^1.0.3",

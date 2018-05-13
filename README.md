@@ -1,4 +1,4 @@
-# hyper-cli2gui
+# hyper-visual
 
 Frequently Used CLI command now listed in a clickable GUI.
 
@@ -49,7 +49,7 @@ You may have collect tons of context for different situation. If you want, you c
 
 ### Publish
 
-Local context knowledge resides in ```~/.hyper-cli2gui.json```.
+Local context knowledge resides in ```~/.hyper-visual.json```.
 
 You can publish it to a github gist for a backup.
 You can also select your favorite parts and publish them separately, so others will subscript some of them as needed.
@@ -62,7 +62,7 @@ If you want to adopt others context file, just add its gist address to ```.hyper
 {
     config: {
         // ...others
-        cli2gui: {
+        visual: {
             gists: ['some gist id']
         }
     }
