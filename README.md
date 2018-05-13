@@ -11,6 +11,26 @@ As you type recommendation from these place will show up:
 1. scripts from nearest ```package.json```
 1. followed colleague's gist
 
+## install
+
+Put ```hyper-visual``` into ```.hyper.js```'s plugin list.
+
+Then add config, though they are all optional:
+
+```js
+{
+    config: {
+        // ...others
+        visual: {
+            opened: true,
+            hotkey: 'Ctrl+G'
+        }
+    }
+}
+```
+
+Then you can toggle panel with hotkey, filter result with typing in terminal, click on any command to execute it.
+
 ## Context
 
 Some command will only be used in specific circumstance.
@@ -63,6 +83,8 @@ If you want to adopt others context file, just add its gist address to ```.hyper
     config: {
         // ...others
         visual: {
+            opened: true,
+            hotkey: 'Ctrl+G',
             gists: ['some gist id']
         }
     }
