@@ -23,7 +23,8 @@
     "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
   },
   "dependencies": {
-    "fuzzysearch": "^1.0.3"
+    "fuzzysearch": "^1.0.3",
+    "react-icons": "^2.2.7"
   },
   "peerDependencies": {
     "immutable": "^3.8.2",

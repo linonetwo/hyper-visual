@@ -12,4 +12,12 @@ export default css`
     overflow: auto;
     z-index: 3;
   }
+  .title-bar {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .block {
+    margin: 5px;
+    margin-bottom: 10px;
+  }
 `;

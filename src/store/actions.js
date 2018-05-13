@@ -53,3 +53,10 @@ export function searchAffordances() {
       },
     });
 }
+
+export const TOGGLE_GUI = `${PLUGIN}/toggle gui`;
+export function toggleGUI() {
+  return {
+    type: TOGGLE_GUI,
+  };
+}

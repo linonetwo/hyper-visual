@@ -3,25 +3,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import MdClose from 'react-icons/lib/md/close'
 
-import { toggleGUI } from '../store/actions';
+import { executeCommand } from '../store/actions';
 
 type Props = {
-  toggleGUI: () => void,
+  executeCommand: string => void,
 };
 type State = {};
 class MainPanel extends Component<Props, State> {
-  toggleGUI = () => {
-    this.props.toggleGUI();
+  onClick = (command: string) => {
+    this.props.executeCommand(command);
   };
   render() {
     return (
-      <div className="hyper-cli2gui">
-        <div className="title-bar">
-          <MdClose />
-        </div>
-      </div>
+      <button onClick={() => this.onClick('ls')} className="hyper-cli2gui">
+        啊啊啊
+      </button>
     );
   }
 }
@@ -30,6 +27,6 @@ function mapStateToProps() {
   return {};
 }
 function mapDispatchToProps(dispatch: Dispatch<*>) {
-  return bindActionCreators({ toggleGUI }, dispatch);
+  return bindActionCreators({ executeCommand }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);
