@@ -19,7 +19,7 @@ const Title = styled.h3`
   margin-bottom: 2px;
 `;
 const Items = styled(Flex)``;
-const Item = styled(Flex)`
+const Item = styled.div`
   padding: 2px 5px;
 
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -29,7 +29,17 @@ const Item = styled(Flex)`
 
   font-weight: lighter;
   cursor: pointer;
-  word-break:break-all;
+  word-break: break-all;
+
+  & span {
+    margin-left: 4px;
+    &:nth-child(1) {
+      margin-left: 0;
+    }
+    &:nth-child(even) {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
 `;
 const ItemIndex = styled.small`
   margin-left: 2px;
@@ -69,13 +79,12 @@ class MainPanel extends Component<Props, State> {
           {(this.state.expanded ? this.props.historyItems : take(this.props.historyItems, this.displayLimit)).map(
             (command: string, index) => (
               <Item
-                center
                 key={command}
                 onClick={() => {
                   this.props.executeCommand(command);
                 }}
               >
-                {command}
+                {command.split(' ').map((part, index) => <span key={index}>{part}</span>)}
                 <ItemIndex>{index}</ItemIndex>
               </Item>
             ),
