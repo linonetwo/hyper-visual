@@ -5,9 +5,11 @@ export const decorateConfig = (config: Object) => ({
   ...config,
   css: `${config.css || ''}${styles}`,
 });
-// Recommendation Panel
+// Add UI, and receiving RPC from main thread
 export { default as decorateHyper } from './components/decorateHyper';
-// Get reference to the shell, so we can execute something inside panel
+// Get RPC from renderer thread, exec some thing natively, then RPC back
 export { default as onWindow } from './onWindow';
-// Calculate what to recommend
+// Handle input recording, and starting of search
 export { reduceSessions } from './store/reducers';
+// dispatch actions from actions
+export { default as middleware } from './store/middleware';
