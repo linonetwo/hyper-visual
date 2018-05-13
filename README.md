@@ -2,14 +2,16 @@
 
 Frequently Used CLI command now listed in a clickable GUI.
 
-## Recommendation
+## Auto Command Recommendations
+
+![screenshot](https://raw.githubusercontent.com/linonetwo/hyper-visual/master/screenshot.png)
 
 As you type recommendation from these place will show up:
 
-1. ```~/.bash_history```
-1. history in current context
-1. scripts from nearest ```package.json```
-1. followed colleague's gist
+1. ```~/.bash_history``` √
+1. history in current context WIP
+1. scripts from nearest ```package.json``` WIP
+1. followed colleague's gist WIP
 
 ## install
 
@@ -30,8 +32,6 @@ Then add config, though they are all optional:
 ```
 
 Then you can toggle panel with hotkey, filter result with typing in terminal, click on any command to execute it.
-
-![screenshot](https://raw.githubusercontent.com/linonetwo/hyper-visual/master/screenshot.png)
 
 ## Context
 
