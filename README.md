@@ -31,6 +31,8 @@ Then add config, though they are all optional:
 
 Then you can toggle panel with hotkey, filter result with typing in terminal, click on any command to execute it.
 
+![screenshot](https://raw.githubusercontent.com/linonetwo/hyper-visual/master/screenshot.png)
+
 ## Context
 
 Some command will only be used in specific circumstance.
