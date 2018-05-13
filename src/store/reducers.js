@@ -3,6 +3,8 @@ import { exec } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 
+import { SESSION_USER_DATA } from './actions';
+
 function readHistory(): Promise<string[]> {
   return new Promise((resolve, reject) =>
     fs.readFile(
@@ -29,7 +31,7 @@ export function reduceSessions(state, action) {
       }
       return state.set('userInputs', { [action.uid]: '' });
 
-    case 'SESSION_USER_DATA': {
+    case SESSION_USER_DATA: {
       const previousInput = state.userInputs[state.activeUid];
       const pressedKey = action.data;
 

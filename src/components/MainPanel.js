@@ -7,27 +7,26 @@ import type { Dispatch } from 'redux';
 import { executeCommand } from '../store/actions';
 
 type Props = {
-  currentInput: string,
-  activeUid: string,
+  executeCommand: string => void,
 };
 type State = {};
 class MainPanel extends Component<Props, State> {
   onClick = (command: string) => {
-    executeCommand(command, this.props.activeUid, this.props.currentInput);
+    this.props.executeCommand(command);
   };
   render() {
     return (
-      <button onClick={() => this.onClick('aaa')} className="hyper-cli2gui">
+      <button onClick={() => this.onClick('ls')} className="hyper-cli2gui">
         啊啊啊
       </button>
     );
   }
 }
 
-function mapStateToProps({ sessions: { userInputs, activeUid } }) {
-  return { currentInput: userInputs ? userInputs[activeUid] : '', activeUid };
+function mapStateToProps() {
+  return {};
 }
 function mapDispatchToProps(dispatch: Dispatch<*>) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ executeCommand }, dispatch);
 }
 export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);
