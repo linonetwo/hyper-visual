@@ -27,6 +27,6 @@ export async function searchHistory(input: string): Promise<string[]> {
     }
     return { ...prevDict, [command]: 0 };
   }, {});
-  const sortedResult = results.sort((first, second) => (dict[first] < dict[second] ? 1 : -1));
+  const sortedResult = Object.keys(dict).sort((first, second) => (dict[first] < dict[second] ? 1 : -1));
   return sortedResult;
 }
