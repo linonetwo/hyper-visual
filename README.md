@@ -31,7 +31,7 @@ Then you will frequently type ```docker-compose rm -f && docker-compose pull && 
 
 This is folder path based context, another possible context is git context. If you are inside a folder with ```./.git```, then git related command that you used before will come into recommendation.
 
-And sure there are some command that you will use globally, likes ```ssh some-server```. They are not belong to any context.
+And sure there are some command that you will use globally, likes ```ssh some-server```. They are not belong to any local context.
 
 ### Existing task runner
 
@@ -41,13 +41,33 @@ Folder with those config file is a kind of context.
 
 ### SSH to a server
 
+It maybe tricky to read ```userHome/.bash_profile``` on the server you ssh to. So we regard remote server as another global context.
+
 ## Upload sharable context
 
 You may have collect tons of context for different situation. If you want, you can share it with your colleague! So just after your colleague handing his project to you, you get to know how to get his project run immediately.
 
 ### Publish
 
+Local context knowledge resides in ```~/.hyper-cli2gui.json```.
+
+You can publish it to a github gist for a backup.
+You can also select your favorite parts and publish them separately, so others will subscript some of them as needed.
+
 ### Subscript
+
+If you want to adopt others context file, just add its gist address to ```.hyper.js```:
+
+```js
+{
+    config: {
+        // ...others
+        cli2gui: {
+            gists: ['some gist id']
+        }
+    }
+}
+```
 
 ## Reference
 
