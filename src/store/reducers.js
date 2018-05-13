@@ -1,4 +1,13 @@
-import { INPUT_STORAGE_PATH, UI_DATA_PATH, SESSION_ADD, SESSION_USER_DATA, SEARCH_HISTORY_FULFILL } from './actions';
+import {
+  PLUGIN,
+  CONFIG_LOAD,
+  INPUT_STORAGE_PATH,
+  UI_DATA_PATH,
+  SESSION_ADD,
+  SESSION_USER_DATA,
+  SEARCH_HISTORY_FULFILL,
+  TOGGLE_GUI,
+} from './actions';
 
 export function reduceSessions(state, action) {
   switch (action.type) {
@@ -33,18 +42,19 @@ export function reduceSessions(state, action) {
 
 export function reduceUI(state, action) {
   switch (action.type) {
+    case '@@INIT':
+      return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} });
     case SESSION_ADD: {
       // create a place to save all data to display, for each tab
       const emptyDataRecords = {
         history: [],
       };
-      if (state[UI_DATA_PATH]) {
-        return state.setIn([UI_DATA_PATH, action.uid], emptyDataRecords);
-      }
-      return state.set(UI_DATA_PATH, { [action.uid]: emptyDataRecords });
+      return state.setIn([PLUGIN, UI_DATA_PATH, action.uid], emptyDataRecords);
     }
     case SEARCH_HISTORY_FULFILL:
-      return state.setIn([UI_DATA_PATH, state.activeUid, 'history'], action.payload);
+      return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'history'], action.payload);
+    case TOGGLE_GUI:
+      return state.setIn([PLUGIN, 'opened'], !state[PLUGIN].opened);
     default:
       return state;
   }

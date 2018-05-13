@@ -9,7 +9,7 @@ import type { Dispatch } from 'redux';
 import MdExpandMore from 'react-icons/lib/md/expand-more';
 import MdExpandLess from 'react-icons/lib/md/expand-less';
 
-import { executeCommand, UI_DATA_PATH } from '../store/actions';
+import { executeCommand, PLUGIN, UI_DATA_PATH } from '../store/actions';
 
 const Container = styled(Flex)`
   padding: 0px 3px;
@@ -103,7 +103,7 @@ class MainPanel extends Component<Props, State> {
 function mapStateToProps(state) {
   const currentUid = state.sessions.activeUid;
   return {
-    historyItems: state.ui?.[UI_DATA_PATH]?.[currentUid]?.history || [],
+    historyItems: state.ui?.[PLUGIN]?.[UI_DATA_PATH]?.[currentUid]?.history || [],
   };
 }
 function mapDispatchToProps(dispatch: Dispatch<*>) {
