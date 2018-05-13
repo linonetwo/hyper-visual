@@ -59,14 +59,14 @@
     "eslint-plugin-jest": "^21.15.1",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.7.0",
-    "flow-bin": "^0.71.0",
+    "eslint-plugin-react": "^7.8.2",
+    "flow-bin": "^0.72.0",
     "flow-typed": "^2.4.0",
     "immutable": "^3.8.2",
     "react": "^16.3.2",
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
-    "webpack": "^4.8.1",
+    "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3"
   },
   "author": "Linonetwo <linonetwo012@gmail.com>"
