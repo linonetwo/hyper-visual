@@ -9,13 +9,22 @@
     "build": "webpack --mode production",
     "prepublish": "rm -rf ./dist && yarn build"
   },
-  "keywords": ["hyper", "hyper.app", "hyper-plugin", "cli", "gui", "history"],
+  "keywords": [
+    "hyper",
+    "hyper.app",
+    "hyper-plugin",
+    "cli",
+    "gui",
+    "history"
+  ],
   "description": "Frequently Used CLI command now listed in a clickable GUI.",
   "repository": {
     "type": "git",
     "url": "git+git@github.com:linonetwo/hyper-cli2gui.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "fuzzysearch": "^1.0.3"
+  },
   "peerDependencies": {
     "immutable": "^3.8.2",
     "react": "^16.3.2",
