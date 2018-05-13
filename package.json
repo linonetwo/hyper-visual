@@ -5,8 +5,8 @@
   "module": "src/index.js",
   "scripts": {
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
-    "dev": "webpack --watch --mode development",
-    "build": "webpack --mode production",
+    "dev": "NODE_ENV=development webpack --watch --mode development",
+    "build": "NODE_ENV=production webpack --mode production",
     "prepublish": "rm -rf ./dist && yarn build"
   },
   "keywords": [
@@ -32,12 +32,14 @@
     "redux": "^4.0.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.46",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0-beta.46",
+    "@babel/preset-env": "^7.0.0-beta.46",
+    "@babel/runtime": "^7.0.0-beta.46",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-flow-runtime": "^0.17.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "babel-loader": "^8.0.0-beta.2",
+    "babel-preset-react-app": "^4.0.0-next.66cc7a90",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
