@@ -12,16 +12,24 @@ import getBlocks from './getBlocks';
 
 const Container = styled(Flex)`
   position: fixed;
-  top: 50px;
-  right: 10px;
+  top: 0px;
+  right: 0px;
   width: 30%;
   min-width: 200px;
-  max-width: 500px;
+  max-height: 100vh;
   overflow: auto;
   z-index: 3;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  font-family: Monospaced Number,Chinese Quote,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,PingFang SC,Hiragino Sans GB,Microsoft YaHei,Helvetica Neue,Helvetica,Arial,sans-serif;
 `;
 const TitleBar = styled(Flex)`
   height: 30px;
+  min-height: 30px;
   background-color: rgba(255, 255, 255, 0.4);
   font-size: 24px;
 `;

@@ -11,25 +11,41 @@ import MdExpandLess from 'react-icons/lib/md/expand-less';
 
 import { executeCommand, UI_DATA_PATH } from '../store/actions';
 
-const Container = styled(Flex)``;
+const Container = styled(Flex)`
+  padding: 0px 3px;
+`;
 const Title = styled.h3`
   cursor: pointer;
-  padding-left: 10px;
+  margin-bottom: 2px;
 `;
-const Items = styled.div`
-  padding-left: 3px;
+const Items = styled(Flex)``;
+const Item = styled(Flex)`
+  padding: 2px 5px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+
+  font-weight: lighter;
+  cursor: pointer;
+  word-break:break-all;
 `;
-const Item = styled.div``;
+const ItemIndex = styled.small`
+  margin-left: 2px;
+  word-break: normal;
+  color: rgba(255, 255, 255, 0.5);
+`;
 const Expander = styled(Flex)`
   cursor: pointer;
+  margin-top: 5px;
   width: 100%;
   height: 30px;
-  background-color: #ccc;
-  opacity: 0.1;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
   &:hover {
-    opacity: 0.5;
+    background-color: rgba(255, 255, 255, 0.5);
   }
-  margin-top: 10px;
 `;
 
 type Props = {
@@ -49,16 +65,18 @@ class MainPanel extends Component<Props, State> {
     return (
       <Container column>
         <Title onClick={this.expandArea}>history</Title>
-        <Items>
+        <Items wrap="true">
           {(this.state.expanded ? this.props.historyItems : take(this.props.historyItems, this.displayLimit)).map(
-            command => (
+            (command: string, index) => (
               <Item
+                center
                 key={command}
                 onClick={() => {
                   this.props.executeCommand(command);
                 }}
               >
                 {command}
+                <ItemIndex>{index}</ItemIndex>
               </Item>
             ),
           )}
