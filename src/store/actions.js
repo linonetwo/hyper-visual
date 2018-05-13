@@ -1,14 +1,17 @@
 // @flow
-
+export const PLUGIN = 'cli2gui';
+export const INPUT_STORAGE_PATH = `${PLUGIN}/userInputs`;
+export const UI_DATA_PATH = `${PLUGIN}/uiData`;
 // hyper APIs
 export const SESSION_USER_DATA = 'SESSION_USER_DATA';
+export const SESSION_ADD = 'SESSION_ADD';
 
-export const WRITE_TO_TERMINAL = 'cli2gui/write to terminal';
-export const EXECUTE_COMMAND = 'cli2gui/execute command';
+export const WRITE_TO_TERMINAL = `${PLUGIN}/write to terminal`;
+export const EXECUTE_COMMAND = `${PLUGIN}/execute command`;
 export const writeToTerminal = (command: string, uid: string) => window.rpc.emit(WRITE_TO_TERMINAL, { command, uid });
 function getCurrentInput(store) {
   const { activeUid } = store.sessions;
-  const currentInput = store.sessions.userInputs[activeUid];
+  const currentInput = store.sessions[INPUT_STORAGE_PATH][activeUid];
   return { currentInput, activeUid };
 }
 export function executeCommand(command: string) {
@@ -29,9 +32,9 @@ export function executeCommand(command: string) {
     });
 }
 
-export const SEARCH_AFFORDANCES = 'cli2gui/search affordances';
-export const SEARCH_HISTORY = 'cli2gui/search history';
-export const SEARCH_HISTORY_FULFILL = 'cli2gui/search history/fulfill';
+export const SEARCH_AFFORDANCES = `${PLUGIN}/search affordances`;
+export const SEARCH_HISTORY = `${PLUGIN}/search history`;
+export const SEARCH_HISTORY_FULFILL = `${PLUGIN}/search history/fulfill`;
 export const searchHistory = (input: string) => window.rpc.emit(SEARCH_HISTORY, input);
 export const searchHistoryFulfill = (results: string[]) => ({
   type: SEARCH_HISTORY_FULFILL,
