@@ -32,7 +32,7 @@ export function reduceSessions(state, action) {
       }
       return state.setIn(
         [INPUT_STORAGE_PATH, state.activeUid],
-        (previousInput || '') + (pressedKey || '').toLowerCase(),
+        (previousInput || '') + (pressedKey || '').toLowerCase()
       );
     }
     default:
@@ -44,6 +44,11 @@ export function reduceUI(state, action) {
   switch (action.type) {
     case '@@INIT':
       return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} });
+    case TOGGLE_GUI:
+      if (state[PLUGIN] === undefined) {
+        return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} }).setIn([PLUGIN, 'opened'], true);
+      }
+      return state.setIn([PLUGIN, 'opened'], !state[PLUGIN].opened);
     case SESSION_ADD: {
       // create a place to save all data to display, for each tab
       const emptyDataRecords = {
@@ -53,8 +58,6 @@ export function reduceUI(state, action) {
     }
     case SEARCH_HISTORY_FULFILL:
       return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'history'], action.payload);
-    case TOGGLE_GUI:
-      return state.setIn([PLUGIN, 'opened'], !state[PLUGIN].opened);
     default:
       return state;
   }
