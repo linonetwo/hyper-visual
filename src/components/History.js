@@ -32,9 +32,8 @@ const Item = styled.div`
   word-break: break-all;
 
   & span {
-    margin-left: 4px;
-    &:nth-child(1) {
-      margin-left: 0;
+    &:not(:nth-child(1)) {
+      margin-left: 4px;
     }
     &:nth-child(even) {
       color: rgba(255, 255, 255, 0.7);
@@ -46,6 +45,7 @@ const ItemIndex = styled.small`
   word-break: normal;
   color: rgba(255, 255, 255, 0.5);
 `;
+// TODO: use https://github.com/AllThingsSmitty/css-protips#use-max-height-for-pure-css-sliders
 const Expander = styled(Flex)`
   cursor: pointer;
   margin-top: 5px;
@@ -87,7 +87,7 @@ class MainPanel extends Component<Props, State> {
                 {command.split(' ').map((part, index) => <span key={index}>{part}</span>)}
                 <ItemIndex>{index}</ItemIndex>
               </Item>
-            ),
+            )
           )}
         </Items>
         {this.props.historyItems.length > this.displayLimit && (
