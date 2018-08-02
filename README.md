@@ -9,7 +9,7 @@ Frequently Used CLI command now listed in a clickable GUI.
 As you type recommendation from these place will show up:
 
 1. ```~/.bash_history``` √
-1. scripts from nearest ```package.json``` WIP
+1. scripts from nearest ```package.json``` √
 1. history in current context WIP
 1. followed colleague's gist WIP
 
