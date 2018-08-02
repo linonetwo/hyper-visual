@@ -17,7 +17,7 @@ const Container = styled(Flex)`
   right: 0px;
   width: 30%;
   min-width: 200px;
-  max-height: calc(100vh - ${({ top }) => top || '35px'});
+  max-height: calc(100vh - ${({ top }) => top || '35px'} - 1px);
   overflow: auto;
   z-index: 3;
   background-color: rgba(255, 255, 255, 0.1);

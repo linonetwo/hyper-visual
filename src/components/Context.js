@@ -2,7 +2,7 @@
 import styled from 'styled-components';
 import Flex from 'styled-flex-component';
 import take from 'lodash/take';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { BooleanValue } from 'react-values';
@@ -59,39 +59,41 @@ const Expander = styled(Flex)`
 `;
 
 /** 根据不同的上下文类型，给出用不同的程序来执行命令 */
-function getContextItemCommand(item: string, context: string) {
+function formatContextItemCommand(item: string, context: string, currentContextConfig: Object) {
   switch (context) {
     case 'node':
-      return `npm run ${item}`;
+      return `${currentContextConfig.tool || 'npm'} run ${item}`;
     default:
       return item;
   }
 }
 
 type Props = {
+  config: Object,
   executeCommand: string => void,
   contexts: { [type: string]: string[] },
 };
 class Context extends Component<Props> {
-  displayLimit = 7;
+  displayLimit = 10;
 
   render() {
-    const { contexts } = this.props;
+    const { contexts, config } = this.props;
     return (
       <Container column>
         {Object.keys(contexts).map((context: string) => (
-          <BooleanValue>
+          <BooleanValue key={context}>
             {({ value: expanded, toggle }) => {
               const contextItems = contexts[context];
               return (
-                <>
+                <Fragment>
                   <Title onClick={toggle}>{context}</Title>
                   <Items wrap="true">
                     {(expanded ? contextItems : take(contextItems, this.displayLimit)).map((command: string, index) => (
                       <Item
                         key={command}
                         onClick={() => {
-                          this.props.executeCommand(getContextItemCommand(command, context));
+                          const commandToExecute = formatContextItemCommand(command, context, config.context[context]);
+                          this.props.executeCommand(commandToExecute);
                         }}
                       >
                         {command.split(' ').map((part, commandIndex) => <span key={commandIndex + part}>{part}</span>)}
@@ -104,7 +106,7 @@ class Context extends Component<Props> {
                       {expanded ? <ExpandLess size={12} /> : <ExpandMore size={12} />}
                     </Expander>
                   )}
-                </>
+                </Fragment>
               );
             }}
           </BooleanValue>
@@ -115,8 +117,10 @@ class Context extends Component<Props> {
 }
 
 function mapStateToProps(state) {
+  const config = state.ui?.[PLUGIN].config;
   const currentUid = state.sessions.activeUid;
   return {
+    config,
     contexts: state.ui?.[PLUGIN]?.[UI_DATA_PATH]?.[currentUid]?.context || {},
   };
 }

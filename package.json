@@ -1,6 +1,6 @@
 {
   "name": "hyper-visual",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Frequently Used CLI command now listed in a clickable GUI.",
   "main": "./dist/index.js",
   "module": "./src/index.js",

@@ -42,7 +42,20 @@ export function reduceSessions(state: Object, action: Object) {
   }
 }
 
-const pluginUIInitialState = { opened: true, [UI_DATA_PATH]: {} };
+const pluginUIInitialState = {
+  opened: true,
+  [UI_DATA_PATH]: {},
+  config: {
+    top: '35px',
+    opened: true,
+    hotkey: 'Ctrl+G',
+    context: {
+      node: {
+        tool: 'npm',
+      },
+    },
+  },
+};
 /** A place to save all data to display, for each tab.
  * Under pluginUIInitialState[UI_DATA_PATH][state.activeUid]
  */
@@ -71,12 +84,12 @@ export function reduceUI(state: Object, action: Object) {
     case SEARCH_HISTORY_FULFILL:
       return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'history'], action.payload);
     case SEARCH_CONTEXT_FULFILL: {
-      console.log(action.payload);
       return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'context'], action.payload);
     }
     case CONFIG_LOAD: {
       const config = action.config?.[PLUGIN] || {};
-      return state.setIn([PLUGIN, 'top'], config.top);
+      const mergedUIState = state[PLUGIN].config.merge(config);
+      return state.setIn([PLUGIN, 'config'], mergedUIState);
     }
     default:
       return state;

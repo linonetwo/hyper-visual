@@ -30,7 +30,15 @@ Then add config if needed, they are all optional. Belows are the default values 
             // panel's margin-top
             top: '35px',
             // hotkey to toggle panel (broken)
-            hotkey: 'Ctrl+G'
+            hotkey: 'Ctrl+G',
+            // setting of contexts
+            context: {
+                // setting for npm scripts
+                node: {
+                    // choose npm or yarn
+                    tool: 'npm',
+                },
+            }
         }
     }
 }
@@ -96,6 +104,10 @@ If you want to adopt others context file, just add its gist address to ```.hyper
     }
 }
 ```
+
+## Hotkey (WIP)
+
+Quickly select suggestion by pushing number keys.
 
 ## Reference
 
