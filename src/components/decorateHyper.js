@@ -2,7 +2,14 @@
 import React, { Component } from 'react';
 import type { ComponentType } from 'react';
 
-import { SEARCH_HISTORY_FULFILL, searchHistoryFulfill, SEARCH_CONTEXT_FULFILL, searchContextFulfill, TOGGLE_GUI, toggleGUI } from '../store/actions';
+import {
+  SEARCH_HISTORY_FULFILL,
+  searchHistoryFulfill,
+  SEARCH_CONTEXT_FULFILL,
+  searchContextFulfill,
+  TOGGLE_GUI,
+  toggleGUI,
+} from '../store/actions';
 import MainPanel from './MainPanel';
 
 export default (Hyper: ComponentType<*>) =>

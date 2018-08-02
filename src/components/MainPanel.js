@@ -59,6 +59,7 @@ class MainPanel extends Component<Props, State> {
           <Close onClick={this.props.toggleGUI} size={16} />
         </TitleBar>
         {getBlocks('history')}
+        {getBlocks('context')}
       </Container>
     );
   }

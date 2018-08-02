@@ -27,6 +27,7 @@
     "consistent-return": "off",
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",
+    "react/no-array-index-key": "off",
     "no-control-regex": "off",
     "no-underscore-dangle": "off",
     "no-unused-expressions": "off",

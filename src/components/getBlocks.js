@@ -1,5 +1,6 @@
 import React from 'react';
 import History from './History';
+import Context from './Context';
 
 export default function getBlocks(type) {
   return (
@@ -7,6 +8,8 @@ export default function getBlocks(type) {
       {do {
         if (type === 'history') {
           <History />;
+        } else if (type === 'context') {
+          <Context />;
         }
       }}
     </div>
