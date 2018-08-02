@@ -6,8 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import MdExpandMore from 'react-icons/lib/md/expand-more';
-import MdExpandLess from 'react-icons/lib/md/expand-less';
+import { MdExpandMore, MdExpandLess } from 'react-icons/md';
 
 import { executeCommand, PLUGIN, UI_DATA_PATH } from '../store/actions';
 
@@ -67,6 +66,7 @@ type State = {
 };
 class MainPanel extends Component<Props, State> {
   state = { expanded: false };
+
   expandArea = () => this.setState({ expanded: !this.state.expanded });
 
   displayLimit = 10;
@@ -87,7 +87,7 @@ class MainPanel extends Component<Props, State> {
                 {command.split(' ').map((part, index) => <span key={index}>{part}</span>)}
                 <ItemIndex>{index}</ItemIndex>
               </Item>
-            )
+            ),
           )}
         </Items>
         {this.props.historyItems.length > this.displayLimit && (
@@ -109,4 +109,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch: Dispatch<*>) {
   return bindActionCreators({ executeCommand }, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainPanel);

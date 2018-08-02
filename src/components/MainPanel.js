@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import MdClose from 'react-icons/lib/md/close';
+import { MdClose } from 'react-icons/md';
 
 import { PLUGIN, toggleGUI } from '../store/actions';
 import getBlocks from './getBlocks';
@@ -68,4 +68,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch: Dispatch<*>) {
   return bindActionCreators({ toggleGUI }, dispatch);
 }
-export default connect(mapStateToProps, mapDispatchToProps)(MainPanel);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(MainPanel);
