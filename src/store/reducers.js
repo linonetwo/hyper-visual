@@ -59,6 +59,11 @@ export function reduceUI(state, action) {
     }
     case SEARCH_HISTORY_FULFILL:
       return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'history'], action.payload);
+
+    case 'CONFIG_LOAD': {
+      const config = action.config?.[PLUGIN] || {};
+      return state.setIn([PLUGIN, 'top'], config.top);
+    }
     default:
       return state;
   }

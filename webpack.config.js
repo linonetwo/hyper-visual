@@ -11,10 +11,6 @@ module.exports = {
     publicPath: '/dist/',
     umdNamedDefine: true,
   },
-  optimization: {
-    // We no not want to minimize our code.
-    minimize: false,
-  },
   module: {
     rules: [
       {
