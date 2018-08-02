@@ -7,4 +7,4 @@ export { reduceSessions, reduceUI } from './store/reducers';
 // dispatch actions from actions
 export { default as middleware } from './store/middleware';
 // register short cut
-export { default as onApp } from './onApp';
+// export { default as onApp } from './onApp';

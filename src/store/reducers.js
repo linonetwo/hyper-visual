@@ -43,10 +43,11 @@ export function reduceSessions(state, action) {
 export function reduceUI(state, action) {
   switch (action.type) {
     case '@@INIT':
-      return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} });
+    case '@@redux/INIT':
+      return state.set(PLUGIN, { opened: true, [UI_DATA_PATH]: {} });
     case TOGGLE_GUI:
       if (state[PLUGIN] === undefined) {
-        return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} }).setIn([PLUGIN, 'opened'], true);
+        return state.set(PLUGIN, { opened: false, [UI_DATA_PATH]: {} });
       }
       return state.setIn([PLUGIN, 'opened'], !state[PLUGIN].opened);
     case SESSION_ADD: {
