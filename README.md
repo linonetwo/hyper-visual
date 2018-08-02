@@ -9,31 +9,42 @@ Frequently Used CLI command now listed in a clickable GUI.
 As you type recommendation from these place will show up:
 
 1. ```~/.bash_history``` √
-1. history in current context WIP
 1. scripts from nearest ```package.json``` WIP
+1. history in current context WIP
 1. followed colleague's gist WIP
 
-## install
+## Install
 
-Put ```hyper-visual``` into ```.hyper.js```'s plugin list.
+- Put ```hyper-visual``` into ```.hyper.js```'s plugin list.
+- Or run ```hyper i hyper-visual``` if you have hyper cli installed.
 
-Then add config, though they are all optional:
+Then add config if needed, they are all optional. Belows are the default values of configs:
 
 ```js
 {
     config: {
         // ...others
         visual: {
+            // is panel default opened
             opened: true,
+            // panel's margin-top
+            top: '35px',
+            // hotkey to toggle panel (broken)
             hotkey: 'Ctrl+G'
         }
     }
 }
 ```
 
-Then you can toggle panel with hotkey, filter result with typing in terminal, click on any command to execute it.
+Then you can filter result with typing in terminal, click on any command to execute it.
 
-## Context
+### Existing task runner (WIP)
+
+Task runner like ```yarn``` is depended on some config file likes ```package.json```. If current folder contains any of those config file, tasks inside will come into recommendation.
+
+Folder with those config file is a kind of context.
+
+## Context (WIP)
 
 Some command will only be used in specific circumstance.
 
@@ -55,28 +66,22 @@ This is folder path based context, another possible context is git context. If y
 
 And sure there are some command that you will use globally, likes ```ssh some-server```. They are not belong to any local context.
 
-### Existing task runner
-
-Task runner like ```yarn``` is depended on some config file likes ```package.json```. If current folder contains any of those config file, tasks inside will come into recommendation.
-
-Folder with those config file is a kind of context.
-
-### SSH to a server
+### SSH to a server (WIP)
 
 It maybe tricky to read ```userHome/.bash_profile``` on the server you ssh to. So we regard remote server as another global context.
 
-## Upload sharable context
+## Upload sharable context (WIP)
 
 You may have collect tons of context for different situation. If you want, you can share it with your colleague! So just after your colleague handing his project to you, you get to know how to get his project run immediately.
 
-### Publish
+### Publish (WIP)
 
 Local context knowledge resides in ```~/.hyper-visual.json```.
 
 You can publish it to a github gist for a backup.
 You can also select your favorite parts and publish them separately, so others will subscript some of them as needed.
 
-### Subscript
+### Subscript (WIP)
 
 If you want to adopt others context file, just add its gist address to ```.hyper.js```:
 
@@ -85,8 +90,7 @@ If you want to adopt others context file, just add its gist address to ```.hyper
     config: {
         // ...others
         visual: {
-            opened: true,
-            hotkey: 'Ctrl+G',
+            ...
             gists: ['some gist id']
         }
     }
