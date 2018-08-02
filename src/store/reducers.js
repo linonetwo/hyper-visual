@@ -6,6 +6,7 @@ import {
   SESSION_ADD,
   SESSION_USER_DATA,
   SEARCH_HISTORY_FULFILL,
+  SEARCH_CONTEXT_FULFILL,
   TOGGLE_GUI,
 } from './actions';
 
@@ -32,7 +33,7 @@ export function reduceSessions(state, action) {
       }
       return state.setIn(
         [INPUT_STORAGE_PATH, state.activeUid],
-        (previousInput || '') + (pressedKey || '').toLowerCase()
+        (previousInput || '') + (pressedKey || '').toLowerCase(),
       );
     }
     default:
@@ -59,8 +60,11 @@ export function reduceUI(state, action) {
     }
     case SEARCH_HISTORY_FULFILL:
       return state.setIn([PLUGIN, UI_DATA_PATH, state.activeUid, 'history'], action.payload);
-
-    case 'CONFIG_LOAD': {
+    case SEARCH_CONTEXT_FULFILL: {
+      console.log(action);
+      return state;
+    }
+    case CONFIG_LOAD: {
       const config = action.config?.[PLUGIN] || {};
       return state.setIn([PLUGIN, 'top'], config.top);
     }

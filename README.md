@@ -38,13 +38,7 @@ Then add config if needed, they are all optional. Belows are the default values 
 
 Then you can filter result with typing in terminal, click on any command to execute it.
 
-### Existing task runner (WIP)
-
-Task runner like ```yarn``` is depended on some config file likes ```package.json```. If current folder contains any of those config file, tasks inside will come into recommendation.
-
-Folder with those config file is a kind of context.
-
-## Context (WIP)
+## Context
 
 Some command will only be used in specific circumstance.
 
@@ -65,6 +59,12 @@ Then you will frequently type ```docker-compose rm -f && docker-compose pull && 
 This is folder path based context, another possible context is git context. If you are inside a folder with ```./.git```, then git related command that you used before will come into recommendation.
 
 And sure there are some command that you will use globally, likes ```ssh some-server```. They are not belong to any local context.
+
+### Existing task runner
+
+Task runner like ```yarn``` is depended on some config file likes ```package.json```. If current folder contains any of those config file, tasks inside will come into recommendation.
+
+Folder with those config file is a kind of context.
 
 ### SSH to a server (WIP)
 
