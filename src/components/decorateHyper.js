@@ -11,6 +11,7 @@ export default (Hyper: ComponentType<*>) =>
       window.rpc.on(SEARCH_HISTORY_FULFILL, results => window.store.dispatch(searchHistoryFulfill(results)));
       window.rpc.on(TOGGLE_GUI, () => window.store.dispatch(toggleGUI()));
     }
+
     render() {
       return <Hyper {...this.props} customChildren={<MainPanel {...this.props} />} />;
     }

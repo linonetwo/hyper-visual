@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import { MdClose } from 'react-icons/md';
+import { Close } from 'styled-icons/material'
 
 import { PLUGIN, toggleGUI } from '../store/actions';
 import getBlocks from './getBlocks';
@@ -54,7 +54,7 @@ class MainPanel extends Component<Props, State> {
     return (
       <Container column closed={!this.props.opened}>
         <TitleBar justifyEnd alignCenter>
-          <MdClose onClick={this.props.toggleGUI} />
+          <Close onClick={this.props.toggleGUI} size={16} />
         </TitleBar>
         {getBlocks('history')}
       </Container>

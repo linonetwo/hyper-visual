@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import type { Dispatch } from 'redux';
-import { MdExpandMore, MdExpandLess } from 'react-icons/md';
+import { ExpandMore, ExpandLess } from 'styled-icons/material';
 
 import { executeCommand, PLUGIN, UI_DATA_PATH } from '../store/actions';
 
@@ -64,35 +64,38 @@ type Props = {
 type State = {
   expanded: boolean,
 };
-class MainPanel extends Component<Props, State> {
+class History extends Component<Props, State> {
   state = { expanded: false };
 
-  expandArea = () => this.setState({ expanded: !this.state.expanded });
+  expandArea = () =>
+    this.setState(({ expanded: prevExpanded }) => ({
+      expanded: !prevExpanded,
+    }));
 
   displayLimit = 10;
 
   render() {
+    const { expanded } = this.state;
+    const { historyItems } = this.props;
     return (
       <Container column>
         <Title onClick={this.expandArea}>history</Title>
         <Items wrap="true">
-          {(this.state.expanded ? this.props.historyItems : take(this.props.historyItems, this.displayLimit)).map(
-            (command: string, index) => (
-              <Item
-                key={command}
-                onClick={() => {
-                  this.props.executeCommand(command);
-                }}
-              >
-                {command.split(' ').map((part, index) => <span key={index}>{part}</span>)}
-                <ItemIndex>{index}</ItemIndex>
-              </Item>
-            ),
-          )}
+          {(expanded ? historyItems : take(historyItems, this.displayLimit)).map((command: string, index) => (
+            <Item
+              key={command}
+              onClick={() => {
+                this.props.executeCommand(command);
+              }}
+            >
+              {command.split(' ').map((part, commandIndex) => <span key={commandIndex + part}>{part}</span>)}
+              <ItemIndex>{index}</ItemIndex>
+            </Item>
+          ))}
         </Items>
-        {this.props.historyItems.length > this.displayLimit && (
+        {historyItems.length > this.displayLimit && (
           <Expander center onClick={this.expandArea}>
-            {this.state.expanded ? <MdExpandLess /> : <MdExpandMore />}
+            {expanded ? <ExpandLess size={12} /> : <ExpandMore size={12} />}
           </Expander>
         )}
       </Container>
@@ -112,4 +115,4 @@ function mapDispatchToProps(dispatch: Dispatch<*>) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MainPanel);
+)(History);

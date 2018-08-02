@@ -25,6 +25,7 @@
     "comma-dangle": 1,
     "arrow-parens": ["off"],
     "consistent-return": "off",
+    "react/destructuring-assignment": "off",
     "no-underscore-dangle": "off",
     "no-unused-expressions": "off",
     "import/prefer-default-export": "off",
