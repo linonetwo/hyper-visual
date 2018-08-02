@@ -3,9 +3,7 @@
   "version": "2.1.5",
   "description": "Frequently Used CLI command now listed in a clickable GUI.",
   "main": "./dist/index.js",
-  "files": [
-    "dist/index.js"
-  ],
+  "module": "./src/index.js",
   "scripts": {
     "flow-typed": "rimraf flow-typed/npm && flow-typed install --overwrite || true",
     "dev": "NODE_ENV=development webpack --watch --mode development",
