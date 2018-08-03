@@ -1,6 +1,6 @@
 # hyper-visual
 
-Frequently Used CLI command now listed in a clickable GUI.
+Frequently Used CLI command now listed in a clickable GUI. A plugin for [hyper](https://hyper.is/).
 
 ## Auto Command Recommendations
 
