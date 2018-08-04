@@ -29,6 +29,8 @@ Then add config if needed, they are all optional. Belows are the default values 
             opened: true,
             // panel's margin-top
             top: '35px',
+            // panel's margin-bottom
+            bottom: '1px',
             // hotkey to toggle panel (broken)
             hotkey: 'Ctrl+G',
             // setting of contexts

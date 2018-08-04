@@ -17,7 +17,7 @@ const Container = styled(Flex)`
   right: 0px;
   width: 30%;
   min-width: 200px;
-  max-height: calc(100vh - ${({ top }) => top || '35px'} - 1px);
+  max-height: calc(100vh - ${({ top }) => top || '35px'} - ${({ bottom }) => bottom || '1px'});
   overflow: auto;
   z-index: 3;
   background-color: rgba(255, 255, 255, 0.1);
@@ -48,13 +48,14 @@ type Props = {
   toggleGUI: () => void,
   opened: boolean | void | null,
   top?: number,
+  bottom?: number,
 };
 type State = {};
 class MainPanel extends Component<Props, State> {
   render() {
-    const { top, opened } = this.props;
+    const { top, bottom, opened } = this.props;
     return (
-      <Container column closed={!opened} top={top}>
+      <Container column closed={!opened} top={top} bottom={bottom}>
         <TitleBar justifyEnd alignCenter>
           <Close onClick={this.props.toggleGUI} size={16} />
         </TitleBar>
@@ -67,7 +68,8 @@ class MainPanel extends Component<Props, State> {
 
 function mapStateToProps(state) {
   const UIState = state.ui?.[PLUGIN] || {};
-  return { opened: UIState.opened, top: UIState.top };
+  const {config} = UIState;
+  return { opened: UIState.opened, ...config };
 }
 function mapDispatchToProps(dispatch: Dispatch<*>) {
   return bindActionCreators({ toggleGUI }, dispatch);

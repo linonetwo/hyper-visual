@@ -47,6 +47,7 @@ const pluginUIInitialState = {
   [UI_DATA_PATH]: {},
   config: {
     top: '35px',
+    bottom: '1px',
     opened: true,
     hotkey: 'Ctrl+G',
     context: {
