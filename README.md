@@ -113,7 +113,7 @@ Quickly select suggestion by pushing number keys.
 
 ## Reference
 
-This project is heavily inspired by [hyper-history](https://github.com/garyxuehong/hyper-history)'s implementation and [autoJump](https://github.com/wting/autojump)'s concept.
+This project is heavily inspired by [hyper-history](https://github.com/garyxuehong/hyper-history)'s implementation and [autoJump](https://github.com/wting/autojump)'s concept. And I found that [xiki hub](https://www.kickstarter.com/projects/xiki/xikihub-the-social-command-line) have a similar vision.
 
 And I also read code from these projects:
 
