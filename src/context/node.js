@@ -8,7 +8,7 @@ export function getScriptsList(cwd: string): Promise<string[]> {
         return reject(error);
       }
       console.log(data);
-      return resolve(Object.keys(data?.scripts));
+      return resolve(Object.keys(data?.scripts || {}));
     });
   });
 }

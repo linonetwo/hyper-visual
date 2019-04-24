@@ -29,7 +29,7 @@ export default (win: Object) => {
 
     try {
       const npmScripts = await getScriptsList(cwd);
-      if (npmScripts?.length > 0) {
+      if (npmScripts.length > 0) {
         contextCommands.node = npmScripts;
       }
     } catch (error) {
