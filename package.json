@@ -1,6 +1,6 @@
 {
   "name": "hyper-visual",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "Frequently Used CLI command now listed in a clickable GUI.",
   "main": "./dist/index.js",
   "module": "./src/index.js",
@@ -30,6 +30,7 @@
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11",
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "react-redux": "^7.0.2",
     "react-values": "^0.3.3",
     "read-package-json": "^2.0.13",
