@@ -59,6 +59,7 @@ class MainPanel extends Component<Props, State> {
         <TitleBar justifyEnd alignCenter>
           <Close onClick={this.props.toggleGUI} size={16} />
         </TitleBar>
+        {getBlocks('tldr')}
         {getBlocks('history')}
         {getBlocks('context')}
       </Container>
