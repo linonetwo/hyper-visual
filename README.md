@@ -4,7 +4,7 @@ CLI commands from the history and the context now listed in a clickable GUI. A p
 
 ## Auto Command Recommendations
 
-![screenshot](https://raw.githubusercontent.com/linonetwo/hyper-visual/master/screenshot.png)
+![screenshot](docs/images/screenshot.png)
 
 As you type recommendation from these place will show up:
 
@@ -17,6 +17,10 @@ As you type recommendation from these place will show up:
 
 - Put ```hyper-visual``` into ```.hyper.js```'s plugin list.
 - Or run ```hyper i hyper-visual``` if you have hyper cli installed.
+
+Then you can filter result with typing in terminal, click on any command to execute it.
+
+## Config
 
 Then add config if needed, they are all optional. Belows are the default values of configs:
 
@@ -46,7 +50,9 @@ Then add config if needed, they are all optional. Belows are the default values 
 }
 ```
 
-Then you can filter result with typing in terminal, click on any command to execute it.
+Changing margin-bottom makes hyper-visual works better with other plugins likes [hyper-search](https://github.com/jaanauati/hyper-search):
+
+![work-with-hyper-search](docs/images/with-hyper-search.png)
 
 ## Context
 
