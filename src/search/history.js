@@ -4,7 +4,6 @@ import fs from 'fs';
 import fuzzysearch from 'fuzzysearch';
 import { flatten, zip } from 'lodash';
 import path from 'path';
-import { log } from 'util';
 
 /**
  * returns 500 recent history in an array
@@ -13,11 +12,11 @@ import { log } from 'util';
 async function readHistory(): Promise<string[]> {
   const bashHistoryPath = path.join(process.env.HOME || '~', '.bash_history');
   const zshHistoryPath = path.join(process.env.HOME || '~', '.zsh_history');
-  const readBash = new Promise((resolve, reject) => {
+  const readBash = new Promise(resolve => {
     fs.readFile(bashHistoryPath, (error, data: Buffer) => (error ? resolve([]) : resolve(data.toString().split('\n'))));
   });
 
-  const readZsh = new Promise((resolve, reject) =>
+  const readZsh = new Promise(resolve =>
     fs.readFile(zshHistoryPath, (error, data: Buffer) => {
       error
         ? resolve([])
@@ -49,5 +48,5 @@ export async function searchHistory(input: string): Promise<string[]> {
     return { ...prevDict, [command]: 0 };
   }, {});
   const sortedResult = Object.keys(dict).sort((first, second) => (dict[first] < dict[second] ? 1 : -1));
-  return history;
+  return sortedResult;
 }
