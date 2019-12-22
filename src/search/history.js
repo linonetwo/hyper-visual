@@ -1,19 +1,40 @@
 // @flow
 import { exec } from 'child_process';
 import fs from 'fs';
-import path from 'path';
 import fuzzysearch from 'fuzzysearch';
+import { flatten, zip } from 'lodash';
+import path from 'path';
+import { log } from 'util';
 
-/** returns 500 recent history in an array
+/**
+ * returns 500 recent history in an array
  * TODO: get remote history when ssh to a server using child_process.exec
  */
-function readHistory(): Promise<string[]> {
-  return new Promise((resolve, reject) =>
-    fs.readFile(
-      path.join(process.env.HOME || '~', '.bash_history'),
-      (error, data: Buffer) => (error ? reject(error) : resolve(data.toString().split('\n'))),
-    ),
+async function readHistory(): Promise<string[]> {
+  const bashHistoryPath = path.join(process.env.HOME || '~', '.bash_history');
+  const zshHistoryPath = path.join(process.env.HOME || '~', '.zsh_history');
+  const readBash = new Promise((resolve, reject) => {
+    fs.readFile(bashHistoryPath, (error, data: Buffer) => (error ? resolve([]) : resolve(data.toString().split('\n'))));
+  });
+
+  const readZsh = new Promise((resolve, reject) =>
+    fs.readFile(zshHistoryPath, (error, data: Buffer) => {
+      error
+        ? resolve([])
+        : resolve(
+            data
+              .toString()
+              .split('\n')
+              .map(line => {
+                const matchResult = line.match(/(: \d+:\d+;)(.*)/);
+                if (!matchResult || matchResult.length !== 3) return '';
+                return matchResult[2];
+              })
+          );
+    })
   );
+  const [bashHistory, zshHistory] = await Promise.all([readBash, readZsh]);
+  return flatten([zshHistory, bashHistory]);
 }
 
 export async function searchHistory(input: string): Promise<string[]> {
@@ -28,5 +49,5 @@ export async function searchHistory(input: string): Promise<string[]> {
     return { ...prevDict, [command]: 0 };
   }, {});
   const sortedResult = Object.keys(dict).sort((first, second) => (dict[first] < dict[second] ? 1 : -1));
-  return sortedResult;
+  return history;
 }
